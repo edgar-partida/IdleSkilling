@@ -1,0 +1,5 @@
+TOP = 'top'
+LEFT = 'left'
+WIDTH = 'width'
+HEIGHT = 'height'
+MONITOR = 'mon'
