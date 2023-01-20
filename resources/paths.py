@@ -1,2 +1,8 @@
 TRAIN_BUTTON_PATH = r'.\resources\img\train.png'
 FIGHT_BUTTON_PATH = r'.\resources\img\fight.png'
+VALUE_BUTTON_PATH = r'.\resources\img\train-value.png'
+SPEED_BUTTON_PATH = r'.\resources\img\train-speed.png'
+UPGRADE_BUTTON_PATH = r'.\resources\img\train-upgrade.png'
+TIMES_BUTTON_PATH = r'.\resources\img\5x.png'
+GYM_BUTTON_PATH = r'.\resources\img\train-gym.png'
+DOJO_BUTTON_PATH = r'.\resources\img\train-dojo.png'
