@@ -7,6 +7,8 @@ import pyautogui
 from utils.screen.Screen import Screen
 from utils.Mouse import Mouse
 import threading
+from multiprocessing import Process
+import sys
 
 print("Press 'f' to start fighting.")
 print("Press 's' to take screenshot area.")
@@ -17,25 +19,34 @@ print("Once started press 'q' to quit.")
 monitorNumber = 2
 mouse = Mouse(pyautogui,sleep)
 screen = Screen(mss, cv2, numpy, mouse, sleep)
-screen.setMonitorNumber(2)
-screen.selectGameArea()
+
 
 # Configuring threads
 workerThread = threading.Thread(target=screen.trainAll)
 
-# Main loop2
-while True:
-    if keyboard.is_pressed('q'):
-        break
-    if keyboard.is_pressed("1"):
-        img = screen.takeGameScreenshot()
-        screen.showImage(img)
-    if keyboard.is_pressed("2"): # Start Training
-        screen.trainAll()
-    if keyboard.is_pressed("3"): # Start Fight
-        screen.goToFight()
+def main():
+    # exitLoop()
+    gameLoop()
+3
+def exitLoop(gameLoopThread):
+    while True:
+        if keyboard.is_pressed('q'):
+            sys.exit()
+            break
 
-
- 
+def gameLoop():
+    screen.setMonitorNumber(monitorNumber)
+    screen.selectGameArea()
+    while True:
+        if keyboard.is_pressed('q'):
+            sys.exit()
+        if keyboard.is_pressed("1"):
+            img = screen.takeGameScreenshot()
+            screen.showImage(img)
+        if keyboard.is_pressed("2"): # Start Training
+            screen.trainAll()
+        if keyboard.is_pressed("3"): # Start Fight
+            screen.usePowers()
         
 
+main()

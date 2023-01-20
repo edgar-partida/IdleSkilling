@@ -158,11 +158,43 @@ class Screen:
         matchingCoords1 = self.getImageCoordinates(gymButtonImg, self.takeGameScreenshot(), threshold)
         self.mouse.clickOn(matchingCoords1,sleepTime)
 
+    def buySkillersIfNeeded(self):
+        currentScreen = self.takeGameScreenshot()
+        valueButtonImg = self.cv2.imread(VALUE_BUTTON_PATH, self.cv2.IMREAD_UNCHANGED)
+        valueCoords = self.getImageCoordinates(valueButtonImg,currentScreen,.9)
+        if len(valueCoords) == 5:
+            return
+        self.singleClickOnImagePath(SKILLER_BUTTON_PATH,0.9,0.2)
+
+    def usePowers(self):
+        self.goToFight()
+        self.singleClickOnImagePath(CHANGE_REVERSED_BUTTON_IMG,0.8,0.2)
+        self.singleClickOnImagePath(CLAW_BUTTON_IMG,0.8,0.2)
+        # self.singleClickOnImagePath(POISON_BUTTON_IMG,0.8,0.1)
+        self.singleClickOnImagePath(METEOR_BUTTON_IMG,0.8,0.2)
+        self.singleClickOnImagePath(FLURRY_BUTTON_IMG,0.8,0.2)
+        self.singleClickOnImagePath(SMITE_BUTTON_IMG,0.8,0.2)
+        self.singleClickOnImagePath(CHANGE_BUTTON_IMG,0.8,0.2)
+        self.singleClickOnImagePath(HEAL_BUTTON_IMG,0.8,0.2)
+        self.singleClickOnImagePath(VISION_BUTTON_IMG,0.8,0.2)
+        # self.singleClickOnImagePath(MIDAS_BUTTON_IMG,0.8,0.1)
+        # self.singleClickOnImagePath(SEAL_BUTTON_IMG,0.8,0.1)
+        self.singleClickOnImagePath(VALOR_BUTTON_IMG,0.8,0.2)
+        self.singleClickOnImagePath(CHANGE_REVERSED_BUTTON_IMG,0.8,0.2)
+
     def trainAll(self):
         self.goToTraining()
         self.set5X()
         self.singleClickOnImagePath(GYM_BUTTON_PATH,0.8,0.5)
+        self.buySkillersIfNeeded()
         self.trainCurrentWindow(1)
         self.singleClickOnImagePath(DOJO_BUTTON_PATH,0.8,0.5)
+        self.buySkillersIfNeeded()
+        self.trainCurrentWindow(1)
+        self.singleClickOnImagePath(DESERT_BUTTON_PATH,0.8,0.5)
+        self.buySkillersIfNeeded()
+        self.trainCurrentWindow(1)
+        self.singleClickOnImagePath(POND_BUTTON_PATH,0.8,0.5)
+        self.buySkillersIfNeeded()
         self.trainCurrentWindow(1)
         self.goToFight()
